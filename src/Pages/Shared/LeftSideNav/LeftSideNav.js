@@ -10,7 +10,7 @@ const LeftSideNav = () => {
     }, [])
     return (
         <div>
-            <h4>All category: {categories.length}</h4>
+            <h4>All category news: {categories.length}</h4>
             <div>
                 {categories.map(category => <p key={category.id}>
                     <Link to={`/category/${category.id}`}>{category.name}</Link>
