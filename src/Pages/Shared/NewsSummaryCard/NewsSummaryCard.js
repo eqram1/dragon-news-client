@@ -2,9 +2,9 @@ import React from 'react';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 import Image from 'react-bootstrap/Image'
-import { FaBookmark, FaShareNodes } from "react-icons/fa6";
+import { FaBookmark, FaEye, FaShareNodes, FaStar } from "react-icons/fa6";
 const NewsSummaryCard = ({ news }) => {
-    const { author, category_id, details, image_url, title, total_view, _id } = news;
+    const { author, details, image_url, rating, title, total_view, _id } = news;
     console.log(news);
     return (
         <Card className="mb-5">
@@ -13,16 +13,16 @@ const NewsSummaryCard = ({ news }) => {
                     <Image
                         roundedCircleo
                         className='me-2'
-                        src={author.img}
+                        src={author?.img}
                         style={{ height: '60px' }}
                     ></Image>
                     <div>
-                        <p>{author.name}</p>
-                        <p>{author.published_date}</p>
+                        <p className='mb-0'>{author?.name}</p>
+                        <p>{author?.published_date}</p>
                     </div>
                 </div>
                 <div>
-                    <FaBookmark></FaBookmark>
+                    <FaBookmark className='me-2'></FaBookmark>
                     <FaShareNodes></FaShareNodes>
                 </div>
             </Card.Header>
@@ -38,7 +38,16 @@ const NewsSummaryCard = ({ news }) => {
                     }
                 </Card.Text>
             </Card.Body>
-            <Card.Footer className="text-muted">2 days ago</Card.Footer>
+            <Card.Footer className="d-flex justify-content-between">
+                <div>
+                    <FaStar className='text-warning me-2'></FaStar>
+                    <span>{rating?.number}</span>
+                </div>
+                <div>
+                    <FaEye className='me-2'></FaEye>
+                    <span>{total_view}</span>
+                </div>
+            </Card.Footer>
         </Card>
 
     );
