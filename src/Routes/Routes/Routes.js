@@ -3,7 +3,7 @@ import Main from "../../layout/Main";
 import Home from "../../Pages/Home/Home/Home";
 import Category from "../../Pages/Category/Category/Category";
 import News from "../../Pages/News/News/News";
-import TermsAndConditions from "../../Pages/Others/TermsAndConditions/TermsAndConditions";
+
 
 
 export const routes = createBrowserRouter([
@@ -26,10 +26,7 @@ export const routes = createBrowserRouter([
                 element: <News></News>,
                 loader: ({ params }) => fetch(`http://localhost:5000/news/${params.id}`)
             },
-            {
-                path: '/terms',
-                element: <TermsAndConditions></TermsAndConditions>
-            },
+
         ]
     }
 

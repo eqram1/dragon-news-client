@@ -8,15 +8,11 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 import { Image } from 'react-bootstrap';
 import { FaUser } from 'react-icons/fa6';
-import Button from 'react-bootstrap/Button';
+
 
 const Header = () => {
-    const { user, logOut } = useContext(AuthContext)
-    const handleLogOut = () => {
-        logOut()
-            .then(() => { })
-            .catch((error) => console.error(error));
-    }
+    const { user } = useContext(AuthContext)
+
     return (
         <Navbar collapseOnSelect className='mb-4' expand="lg" bg="light" variant="light">
             <Container>
