@@ -5,12 +5,26 @@ import { FaGoogle, FaGithub, FaFacebook, FaTwitter, FaWhatsapp, FaTwitch, FaTrow
 import ListGroup from 'react-bootstrap/ListGroup';
 import BrandCarousel from '../BrandCarousel/BrandCarousel';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 const RightSideNav = () => {
     const { providerLogin } = useContext(AuthContext);
-    const googleProvider = new GoogleAuthProvider()
+
+    const { providerGitin } = useContext(AuthContext);
+
+    const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
+
     const handleGoogleSignIn = () => {
         providerLogin(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => console.error(error));
+    }
+
+    const handleGithubSignIn = () => {
+        providerGitin(githubProvider)
             .then(result => {
                 const user = result.user;
                 console.log(user);
@@ -21,7 +35,7 @@ const RightSideNav = () => {
         <div>
             <ButtonGroup vertical>
                 <Button onClick={handleGoogleSignIn} className='mb-2' variant="outline-primary"><FaGoogle></FaGoogle>Login with Google</Button>
-                <Button variant="outline-dark"><FaGithub></FaGithub>Login with Github</Button>
+                <Button onClick={handleGithubSignIn} variant="outline-dark"><FaGithub></FaGithub>Login with Github</Button>
             </ButtonGroup>
             <div className='mt-4'>
                 <h5>Find us on</h5>

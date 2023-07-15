@@ -40,18 +40,7 @@ const Header = () => {
                     </Nav>
                     <Nav>
                         <Nav.Link href="#deets">
-                            {user?.uid ?
-                                <>
-                                    <span>{user?.displayName}</span>
-                                    <Button variant="light" onClick={handleLogOut}>Logout</Button>
-                                </>
-                                :
-                                <>
-                                    <Link className='d-flex' to='/login'>Login</Link>
-                                    <Link to='/register'>Register</Link>
-                                </>
-                            }
-                        </Nav.Link>
+                            {user?.displayName}</Nav.Link>
                         <Nav.Link eventKey={2} href="#memes">
                             {user?.photoURL ?
                                 <Image style={{ height: '30px' }} roundedCircle src={user.photoURL}></Image>
